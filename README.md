@@ -1,2 +1,4 @@
-# ngk-app
-NGK mobile app
+# NGK MOBILE APP
+
+## Run
+Install ionic and `ionic serve`
