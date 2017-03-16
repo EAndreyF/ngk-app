@@ -1,3 +1,5 @@
 <ion-item>
-  {{message.id}}
+  <h3>{{message.title}}</h3>
+  <p>{{message.text}}</p>
+  <i>{{message.time | amCalendar:nextDay}}</i>
 </ion-item>
