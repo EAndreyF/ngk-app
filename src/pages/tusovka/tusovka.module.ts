@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {IonicModule} from 'ionic-angular';
 
 import {TusovkaPage} from './tusovka.page';
-import {MessagesListModule} from '../../components/messages-list/messages-list.module';
+import {MessagesPageContentModule} from '../../components/messages-page-content/messages-page-content.module';
 
 import {MainModule} from '../main/main.module';
 
@@ -11,7 +11,7 @@ import {MainModule} from '../main/main.module';
     TusovkaPage,
   ],
   imports: [
-    MessagesListModule,
+    MessagesPageContentModule,
     IonicModule,
   ],
   entryComponents: [

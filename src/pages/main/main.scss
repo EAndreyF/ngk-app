@@ -17,3 +17,11 @@ page-main {
 .main-title__img {
   vertical-align: middle;
 }
+
+.main__tusovka {
+  position: absolute;
+  height: 200px;
+  width: 100%;
+  top: 0;
+  left: calc(100% - 100px);
+}

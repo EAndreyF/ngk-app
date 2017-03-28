@@ -3,6 +3,7 @@ import {IonicModule} from 'ionic-angular';
 
 import {MainPage} from './main.page';
 import {RouteModule} from '../../directives/route/route.module';
+import {MessagesPageContentModule} from '../../components/messages-page-content/messages-page-content.module';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import {RouteModule} from '../../directives/route/route.module';
   imports: [
     IonicModule,
     RouteModule,
+    MessagesPageContentModule,
   ],
   entryComponents: [
     MainPage,
