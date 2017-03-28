@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { MessagesService } from '../../services/messages.service';
-import { Message } from '../../models/message.model';
+import {MessagesService} from '../../services/messages.service';
+import {Message} from '../../models/message.model';
 
 @Component({
   selector: 'page-tusovka',
@@ -11,9 +11,7 @@ import { Message } from '../../models/message.model';
 export class TusovkaPage implements OnInit {
   messages: Message[] = [];
 
-  constructor(
-    private messagesService: MessagesService
-  ) {
+  constructor(private messagesService: MessagesService) {
   }
 
   getMessages(): void {

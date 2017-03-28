@@ -1,28 +1,35 @@
 import {NgModule, ErrorHandler} from '@angular/core';
 import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
+import {CustomIconsModule} from 'ionic2-custom-icons';
+
 import {MessagesService} from '../services/messages.service';
 import {ParseService} from '../services/parse.service';
+import {RouterService} from '../services/router.service';
+
 import {MyApp} from './app.component';
-import {Page1} from '../pages/page1/page1';
-import {Page2} from '../pages/page2/page2';
 
 import {TusovkaModule} from '../pages/tusovka/tusovka.module';
+import {MainModule} from '../pages/main/main.module';
+import {RouteModule} from '../directives/route/route.module';
 
 @NgModule({
   declarations: [
     MyApp,
-    Page1,
-    Page2,
   ],
   imports: [
-    IonicModule.forRoot(MyApp),
+    CustomIconsModule,
+    IonicModule.forRoot(MyApp, {
+      locationStrategy: 'hash'
+    }, {
+      links: RouterService.getRoutes()
+    }),
+    MainModule,
     TusovkaModule,
+    RouteModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    Page1,
-    Page2,
   ],
   providers: [
     MessagesService,
