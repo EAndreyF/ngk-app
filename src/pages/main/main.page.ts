@@ -8,4 +8,8 @@ export class MainPage {
 
   constructor() {
   }
+
+  showTusovka(e) {
+    console.log(e);
+  }
 }
