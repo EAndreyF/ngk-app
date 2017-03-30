@@ -18,24 +18,46 @@ page-main {
   vertical-align: middle;
 }
 
-.main__tusovka {
+.main-tusovka {
   position: absolute;
   width: 100%;
   top: 0;
-  left: 60%;
-  bottom: 10%;
+  left: 0;
+  z-index: 11;
+  transform: translate3d(60%, 20%, 0);
+  height: 70%;
+  margin: 0;
 }
 
-.main__tusovka-overlay {
+@keyframes showPage {
+  0% {
+    height: 70%;
+    transform: translate3d(60%, 20%, 0);
+  }
+  100% {
+    height: 100%;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.main-tusovka_animated {
+  animation-name: showPage;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  height: 100%;
+  transform: translate3d(0, 0, 0);
+}
+
+.main-tusovka__overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1;
+  z-index: 11;
 }
 
-.main__messages {
+.main-tusovka__messages {
   position: absolute;
   width: 100%;
   height: 100%

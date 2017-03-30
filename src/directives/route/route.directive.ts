@@ -1,5 +1,4 @@
 import {Directive, HostListener, Input} from '@angular/core';
-import {App} from 'ionic-angular';
 
 import {RouterService} from '../../services/router.service';
 
@@ -10,27 +9,17 @@ import {RouterService} from '../../services/router.service';
  * с параметрами params
  */
 @Directive({
-  selector: '[tRoute]'
+  selector: '[tRoute]',
+  providers: [RouterService],
 })
 export class TRouteDirective {
-  constructor(public appCtrl: App) {
+  constructor(
+    private routeService: RouterService
+  ) {
   }
 
   @HostListener('click') onClick() {
-    let routeName;
-    let routeParams;
-    if (typeof this.routeName === 'string') {
-      routeName = this.routeName;
-    } else {
-      routeName = this.routeName.name;
-      routeParams = this.routeName.params;
-    }
-
-    const route = RouterService.getRouteByName(routeName);
-
-    if (route) {
-      this.appCtrl.getRootNav().push(route.component, routeParams);
-    }
+    this.routeService.navigateTo(this.routeName);
   }
 
   @Input('tRoute') routeName: string | {name: string, params: Array<any>};

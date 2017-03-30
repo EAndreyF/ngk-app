@@ -21,7 +21,13 @@ import {RouteModule} from '../directives/route/route.module';
     IonicModule.forRoot(MyApp, {
       locationStrategy: 'hash'
     }, {
-      links: RouterService.getRoutes()
+      // links: [{
+      //   component: function () {},
+      //   title: 'Тусовка',
+      //   name: 'Tusovka',
+      //   segment: 'tusovka'
+      // }]
+      // // links: RouterService.getRoutes()
     }),
     MainModule,
     TusovkaModule,
@@ -34,6 +40,7 @@ import {RouteModule} from '../directives/route/route.module';
   providers: [
     MessagesService,
     ParseService,
+    RouterService,
     {
       provide: ErrorHandler,
       useClass: IonicErrorHandler

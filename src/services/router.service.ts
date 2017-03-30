@@ -1,29 +1,57 @@
 import {Injectable} from '@angular/core';
+import {App} from 'ionic-angular';
 
 import {Route} from '../pages/route';
 
-import {TusovkaModule} from '../pages/tusovka/tusovka.module';
-import {MainModule} from '../pages/main/main.module';
-
-const links = [
-  MainModule.getRoute(),
-  TusovkaModule.getRoute(),
-];
-
-const linksHash = links.reduce((acc, link) => {
-  acc[link.name] = link;
-  return acc;
-}, {});
 
 @Injectable()
 export class RouterService {
-  constructor() {}
+  links = [];
+  linksHash = {};
+  constructor(public appCtrl: App) {
+    const TusovkaModule = require('../pages/tusovka/tusovka.module').TusovkaModule;
+    const MainModule = require('../pages/main/main.module').MainModule;
 
-  static getRoutes(): Array<Route> {
-    return links;
+    this.links = [
+      MainModule.getRoute(),
+      TusovkaModule.getRoute(),
+    ];
+
+    this.linksHash = this.links.reduce((acc, link) => {
+      acc[link.name] = link;
+      return acc;
+    }, {});
   }
 
-  static getRouteByName(name) {
-    return linksHash[name];
+  getRoutes(): Array<Route> {
+    return this.links;
+  }
+
+  getRouteByName(name) {
+    return this.linksHash[name];
+  }
+
+  navigateTo(params, noAnimate?) {
+    let routeName;
+    let routeParams;
+    if (typeof params === 'string') {
+      routeName = params;
+    } else {
+      routeName = params.name;
+      routeParams = params.params;
+    }
+
+    const route = this.getRouteByName(routeName);
+
+    if (route) {
+      let opts = {
+        animate: true
+      };
+
+      if (noAnimate) {
+        opts.animate = false;
+      }
+      this.appCtrl.getRootNav().push(route.component, routeParams, opts);
+    }
   }
 }

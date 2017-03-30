@@ -6,18 +6,23 @@ import {Route} from '../pages/route';
 import {RouterService} from '../services/router.service';
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers: [RouterService]
 })
 export class MyApp {
-  rootPage: any = RouterService.getRouteByName('Main').component;
+  rootPage: any;
 
   pages: Array<Route>;
 
-  constructor(public platform: Platform) {
+  constructor(
+    public platform: Platform,
+    private routeService: RouterService
+  ) {
+    this.rootPage = routeService.getRouteByName('Main').component;
     this.initializeApp();
 
     // used for an example of ngFor and navigation
-    this.pages = RouterService.getRoutes();
+    this.pages = routeService.getRoutes();
   }
 
   initializeApp() {

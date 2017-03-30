@@ -1,3 +1,12 @@
+<ion-card
+  class="main-tusovka"
+  [class.main-tusovka_animated]="shown"
+  (click)="showTusovka($event)"
+>
+  <div class="main-tusovka__overlay"></div>
+  <messages-page-content class="main-tusovka__messages"></messages-page-content>
+</ion-card>
+
 <ion-header>
     <!--<custom-icon set="custom" name="logo"></custom-icon>-->
 
@@ -17,9 +26,4 @@
     <ion-item>Вики</ion-item>
     <ion-item>О клубе</ion-item>
   </ion-list>
-
-  <ion-card class="main__tusovka">
-    <messages-page-content class="main__messages"></messages-page-content>
-    <div class="main__tusovka-overlay" (click)="showTusovka($event)"></div>
-  </ion-card>
 </ion-content>

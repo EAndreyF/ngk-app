@@ -25,7 +25,7 @@ export class TusovkaModule {
       title: 'Тусовка',
       name: 'Tusovka',
       segment: 'tusovka',
-      defaultHistory: [MainModule.getRoute().component]
+      // defaultHistory: [MainModule.getRoute().component]
     };
   }
 }
